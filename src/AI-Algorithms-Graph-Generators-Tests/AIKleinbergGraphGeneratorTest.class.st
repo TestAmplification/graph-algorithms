@@ -16,6 +16,37 @@ AIKleinbergGraphGeneratorTest >> testNumberOfLocalNodes [
 ]
 
 { #category : #'as yet unclassified' }
+AIKleinbergGraphGeneratorTest >> testNumberOfLocalNodes_amp_A39 [
+
+	"SmallAmp has derived this test from `AIKleinbergGraphGeneratorTest>>#testNumberOfLocalNodes` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `AIKleinbergGraphGenerator>> #buildUniformDistributionOfLongRangeLinks` from 123 to 284:
+		Operation: ReplaceDoBlockWithEmptyBlockOperator
+		Code snippet: `nodes do: [ :each | 
+	q timesRepeat: [ 
+		self
+			addEdge: { 
+					each model.
+					nodes atRandom model }
+			from: #first
+			to: #second ] ]`
+		Dynamic state: nil
+		Mutant id: ReplaceDoBlockWithEmptyBlockOperator#AIKleinbergGraphGenerator#buildUniformDistributionOfLongRangeLinks#123#284
+"
+
+	<madeBySmallAmp>
+	| g |
+	g := AIKleinbergGraphGenerator new.
+	g := g
+		     nodes: (1 to: 10 * 10);
+		     n: 10.
+	g initializeNodesOnGrid.
+	self
+		should: [ g buildUniformDistributionOfLongRangeLinks ]
+		raise: MessageNotUnderstood
+]
+
+{ #category : #'as yet unclassified' }
 AIKleinbergGraphGeneratorTest >> testNumberOfLocalNodes_amp_A9 [
 
 	<madeBySmallAmp>
