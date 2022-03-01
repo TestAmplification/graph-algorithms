@@ -50,6 +50,31 @@ AIBFSTest >> testComplexUndirectedGraph [
 	self assert: (#( 4 3 2 12 9 ) hasEqualElements: (bfsp runFrom: 4 to: 9))
 ]
 
+{ #category : #'as yet unclassified' }
+AIBFSTest >> testComplexUndirectedGraph_amp [
+
+	"SmallAmp has derived this test from `AIBFSTest>>#testComplexUndirectedGraph` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `AIBFS>> #end` from 7 to 11:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ end`
+		Dynamic state: {#end->nil}
+		Mutant id: RemoveCaretOperator#AIBFS#end#7#11
+	*	In `AIBFS>> #start` from 9 to 15:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ start`
+		Dynamic state: {#start->nil}
+		Mutant id: RemoveCaretOperator#AIBFS#start#9#15
+"
+
+	<madeBySmallAmp>
+	| anAIBFS |
+	anAIBFS := AIGraphFixture complexUndirectedGraph: bfsp.
+	self
+		assert: anAIBFS end isNil;
+		assert: anAIBFS start isNil
+]
+
 { #category : #tests }
 AIBFSTest >> testSimpleGraph [
 

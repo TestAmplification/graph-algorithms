@@ -34,6 +34,62 @@ AIHitsTest >> testComplexWCycle [
 		self deny: node auth equals: 1 ]
 ]
 
+{ #category : #'as yet unclassified' }
+AIHitsTest >> testComplexWCycle_amp [
+
+	<smallAmpCoveres: 'RemoveCaretOperator#AIHits#run#184#190'>
+	<smallAmpCoveres: 'RemoveCaretOperator#AIHits#k#30#32'>
+	<smallAmpFrom: 'AIHitsTest>>#testComplexWCycle'>
+	<madeBySmallAmp>
+	| anAIHits aCollection1 aCollection2 |
+	anAIHits := AIGraphFixture complexWeightedGraph: hits.
+	self
+		assert: anAIHits class equals: AIHits;
+		assert: anAIHits graph class equals: Array;
+		assert: anAIHits graph size equals: 2;
+		assert: (anAIHits graph at: 1) class equals: SortedCollection;
+		assert: (anAIHits graph at: 1) size equals: 19;
+		assert: (anAIHits graph at: 2) class equals: SortedCollection;
+		assertEmpty: (anAIHits graph at: 2);
+		assert: anAIHits edges class equals: SortedCollection;
+		assertEmpty: anAIHits edges;
+		assert: anAIHits k equals: 20;
+		assert: anAIHits nodes class equals: SortedCollection;
+		assert: anAIHits nodes size equals: 19.
+	aCollection1 := hits run.
+	self
+		assert: hits class equals: AIHits;
+		assert: hits graph class equals: Array;
+		assert: hits graph size equals: 2;
+		assert: (hits graph at: 1) class equals: SortedCollection;
+		assert: (hits graph at: 1) size equals: 19;
+		assert: (hits graph at: 2) class equals: SortedCollection;
+		assertEmpty: (hits graph at: 2);
+		assert: hits edges class equals: SortedCollection;
+		assertEmpty: hits edges;
+		assert: hits k equals: 20;
+		assert: hits nodes class equals: SortedCollection;
+		assert: hits nodes size equals: 19;
+		assert: aCollection1 class equals: SortedCollection;
+		assert: aCollection1 size equals: 19.
+	aCollection2 := hits nodes.
+	self
+		assert: hits class equals: AIHits;
+		assert: hits graph class equals: Array;
+		assert: hits graph size equals: 2;
+		assert: (hits graph at: 1) class equals: SortedCollection;
+		assert: (hits graph at: 1) size equals: 19;
+		assert: (hits graph at: 2) class equals: SortedCollection;
+		assertEmpty: (hits graph at: 2);
+		assert: hits edges class equals: SortedCollection;
+		assertEmpty: hits edges;
+		assert: hits k equals: 20;
+		assert: hits nodes class equals: SortedCollection;
+		assert: hits nodes size equals: 19;
+		assert: aCollection2 class equals: SortedCollection;
+		assert: aCollection2 size equals: 19
+]
+
 { #category : #tests }
 AIHitsTest >> testCycle [
 
@@ -53,6 +109,27 @@ AIHitsTest >> testGraphForHits [
 	hits nodes do: [ :node | 
 		self deny: node hub equals: 0.
 		self deny: node auth equals: 0 ]
+]
+
+{ #category : #'as yet unclassified' }
+AIHitsTest >> testGraphForHits_amp [
+
+	"SmallAmp has derived this test from `AIHitsTest>>#testGraphForHits` by regenerating its assertions.
+	This test can cover this part:
+	*	In `AIHits>> #computeAuthoritiesFor:` from 105 to 118:
+		Operation: ReplacePlusWithMinusMutantOperator
+		Code snippet: `sum + node hub`
+		Dynamic state: {#sum->-1.6043728915247528}
+		Mutant id: ReplacePlusWithMinusMutantOperator#AIHits#computeAuthoritiesFor:#105#118
+"
+
+	<madeBySmallAmp>
+	AIGraphFixture simpleGraphForHits: hits.
+	hits
+		k: 3;
+		run.
+	self assert: (hits nodes at: 1) auth equals: 0.17321220897800546.
+	hits nodes
 ]
 
 { #category : #tests }
@@ -83,4 +160,60 @@ AIHitsTest >> testSimpleW [
 	hits nodes do: [ :node | 
 		self deny: node hub equals: 1.
 		self deny: node auth equals: 1 ]
+]
+
+{ #category : #'as yet unclassified' }
+AIHitsTest >> testSimple_amp [
+
+	"SmallAmp has derived this test from `AIHitsTest>>#testSimple` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `AIHits>> #normalizeScores` from 409 to 423:
+		Operation: ReplaceDivisionWithMultiplicationMutantOperator
+		Code snippet: `n hub / hubNorm`
+		Dynamic state: {#hubNorm->8.131779027517391e97}
+		Mutant id: ReplaceDivisionWithMultiplicationMutantOperator#AIHits#normalizeScores#409#423
+	*	In `AIHits>> #normalizeScores` from 267 to 306:
+		Operation: ReplaceIfTrueWithIfFalseMutantOperator
+		Code snippet: `authNorm = 0 ifTrue: [ authNorm := 1.0 ]`
+		Dynamic state: {#authNorm->2.4046797148842156}
+		Mutant id: ReplaceIfTrueWithIfFalseMutantOperator#AIHits#normalizeScores#267#306
+	*	In `AIHits>> #computeHubsFor:` from 96 to 110:
+		Operation: ReplacePlusWithMinusMutantOperator
+		Code snippet: `sum + node auth`
+		Dynamic state: {#sum->0}
+		Mutant id: ReplacePlusWithMinusMutantOperator#AIHits#computeHubsFor:#96#110
+	*	In `AIHits>> #run` from 50 to 103:
+		Operation: ReplaceDoBlockWithEmptyBlockOperator
+		Code snippet: `nodes do: [ :node | self computeAuthoritiesFor: node ]`
+		Dynamic state: nil
+		Mutant id: ReplaceDoBlockWithEmptyBlockOperator#AIHits#run#50#103
+	*	In `AIHits>> #normalizeScores` from 381 to 397:
+		Operation: ReplaceDivisionWithMultiplicationMutantOperator
+		Code snippet: `n auth / authNorm`
+		Dynamic state: {#authNorm->2.4046797148842156}
+		Mutant id: ReplaceDivisionWithMultiplicationMutantOperator#AIHits#normalizeScores#381#397
+	*	In `AIHits>> #normalizeScores` from 267 to 278:
+		Operation: ReplaceEqualWithNotEqualOperator
+		Code snippet: `authNorm = 0`
+		Dynamic state: {#authNorm->2.4046797148842156}
+		Mutant id: ReplaceEqualWithNotEqualOperator#AIHits#normalizeScores#267#278
+	*	In `AIHits>> #run` from 108 to 154:
+		Operation: ReplaceDoBlockWithEmptyBlockOperator
+		Code snippet: `nodes do: [ :node | self computeHubsFor: node ]`
+		Dynamic state: nil
+		Mutant id: ReplaceDoBlockWithEmptyBlockOperator#AIHits#run#108#154
+	*	In `AIHits>> #normalizeScores` from 267 to 306:
+		Operation: ReplaceIfTrueReceiverWithTrueOperator
+		Code snippet: `authNorm = 0 ifTrue: [ authNorm := 1.0 ]`
+		Dynamic state: {#authNorm->1.4142135623724519}
+		Mutant id: ReplaceIfTrueReceiverWithTrueOperator#AIHits#normalizeScores#267#306
+"
+
+	<madeBySmallAmp>
+	AIGraphFixture simpleGraph: hits.
+	hits run.
+	self
+		assert: (hits nodes at: 1) hub equals: 6.743495761741511e-7;
+		assert: (hits nodes at: 2) auth equals: 9.536743164058163e-7.
+	hits nodes
 ]
