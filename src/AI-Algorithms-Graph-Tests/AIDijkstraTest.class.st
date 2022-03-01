@@ -107,6 +107,42 @@ AIDijkstraTest >> testComplexWeightedGraph2BackTracking [
 	dijkstra reset
 ]
 
+{ #category : #'as yet unclassified' }
+AIDijkstraTest >> testComplexWeightedGraph2BackTracking_amp_A152 [
+
+	"SmallAmp has derived this test from `AIDijkstraTest>>#testComplexWeightedGraph2BackTracking` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `AIDijkstra>> #pathDistance` from 16 to 38:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ self end pathDistance`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#AIDijkstra#pathDistance#16#38
+"
+
+	<madeBySmallAmp>
+	| shortestPath aNumber |
+	AIGraphFixture complexWeightedGraph2: dijkstra.
+	aNumber := dijkstra
+		           runFrom: 0 to: 1;
+		           reconstructPath;
+		           reset;
+		           runFrom: 0 to: 2;
+		           reconstructPath;
+		           reset;
+		           runFrom: 0 to: 3;
+		           reconstructPath;
+		           reset;
+		           pathDistance.
+	self assert: aNumber asString equals: 'Float infinity'.
+	dijkstra
+		runFrom: 0 to: 4;
+		reconstructPath;
+		reset;
+		runFrom: 0 to: 5;
+		reconstructPath;
+		reset
+]
+
 { #category : #tests }
 AIDijkstraTest >> testComplexWeightedGraph3 [
 
