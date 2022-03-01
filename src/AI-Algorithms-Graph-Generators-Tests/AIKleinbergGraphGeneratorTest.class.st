@@ -16,6 +16,27 @@ AIKleinbergGraphGeneratorTest >> testNumberOfLocalNodes [
 ]
 
 { #category : #'as yet unclassified' }
+AIKleinbergGraphGeneratorTest >> testNumberOfLocalNodes_amp [
+
+	"SmallAmp has derived this test from `AIKleinbergGraphGeneratorTest>>#testNumberOfLocalNodes` by regenerating its assertions.
+	This test can cover this part:
+	*	In `AIKleinbergGraphGenerator>> #n` from 4 to 6:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ n`
+		Dynamic state: {#n->nil}
+		Mutant id: RemoveCaretOperator#AIKleinbergGraphGenerator#n#4#6
+"
+
+	<madeBySmallAmp>
+	| g |
+	g := AIKleinbergGraphGenerator new.
+	self assert: g n isNil.
+	(g
+		 nodes: (1 to: 10 * 10);
+		 n: 10) initializeNodesOnGrid
+]
+
+{ #category : #'as yet unclassified' }
 AIKleinbergGraphGeneratorTest >> testNumberOfLocalNodes_amp_A39 [
 
 	"SmallAmp has derived this test from `AIKleinbergGraphGeneratorTest>>#testNumberOfLocalNodes` by applying some transformations and regenerating its assertions.
