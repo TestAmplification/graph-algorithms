@@ -37,6 +37,128 @@ AIKleinbergGraphGeneratorTest >> testNumberOfLocalNodes_amp [
 ]
 
 { #category : #'as yet unclassified' }
+AIKleinbergGraphGeneratorTest >> testNumberOfLocalNodes_amp_A35_O1 [
+
+	<smallAmpCoveres:
+	'ReplacePlusWithMinusMutantOperator#AIKleinbergGraphGenerator#initializeNodesOnGrid#121#144'>
+	<smallAmpCoveres:
+	'ReplacePlusWithMinusMutantOperator#AIKleinbergGraphGenerator#initializeNodesOnGrid#86#107'>
+	<smallAmpFrom:
+	'AIKleinbergGraphGeneratorTest>>#testNumberOfLocalNodes'>
+	<madeBySmallAmp>
+	| g anInteger |
+	g := AIKleinbergGraphGenerator new.
+	self
+		assert: AIKleinbergGraphGenerator asString
+		equals: 'AIKleinbergGraphGenerator';
+		assert: g class equals: AIKleinbergGraphGenerator;
+		assert: g graph class equals: Array;
+		assert: g graph size equals: 2;
+		assert: (g graph at: 1) class equals: SortedCollection;
+		assertEmpty: (g graph at: 1);
+		assert: (g graph at: 2) class equals: SortedCollection;
+		assertEmpty: (g graph at: 2);
+		assert: g edges class equals: SortedCollection;
+		assertEmpty: g edges;
+		assert: g n isNil;
+		assert: g nodes class equals: SortedCollection;
+		assertEmpty: g nodes.
+	g nodes: (10 to: 10 * 1).
+	self
+		assert: g class equals: AIKleinbergGraphGenerator;
+		assert: g graph class equals: Array;
+		assert: g graph size equals: 2;
+		assert: (g graph at: 1) class equals: SortedCollection;
+		assert: (g graph at: 1) size equals: 1;
+		assert: ((g graph at: 1) at: 1) class equals: AI2DGridNode;
+		assert: (g graph at: 2) class equals: SortedCollection;
+		assertEmpty: (g graph at: 2);
+		assert: g edges class equals: SortedCollection;
+		assertEmpty: g edges;
+		assert: g n isNil;
+		assert: g nodes class equals: SortedCollection;
+		assert: g nodes size equals: 1;
+		assert: (g nodes at: 1) class equals: AI2DGridNode;
+		assert: (g nodes at: 1) x isNil;
+		assert: (g nodes at: 1) adjacentNodes class
+		equals: OrderedCollection;
+		assertEmpty: (g nodes at: 1) adjacentNodes;
+		assert: (g nodes at: 1) y isNil;
+		assert: (g nodes at: 1) model equals: 10;
+		assert: (g nodes at: 1) label equals: 'Node: '.
+	g := g n: 10.
+	self
+		assert: g class equals: AIKleinbergGraphGenerator;
+		assert: g graph class equals: Array;
+		assert: g graph size equals: 2;
+		assert: (g graph at: 1) class equals: SortedCollection;
+		assert: (g graph at: 1) size equals: 1;
+		assert: ((g graph at: 1) at: 1) class equals: AI2DGridNode;
+		assert: (g graph at: 2) class equals: SortedCollection;
+		assertEmpty: (g graph at: 2);
+		assert: g edges class equals: SortedCollection;
+		assertEmpty: g edges;
+		assert: g n equals: 10;
+		assert: g nodes class equals: SortedCollection;
+		assert: g nodes size equals: 1;
+		assert: (g nodes at: 1) class equals: AI2DGridNode;
+		assert: (g nodes at: 1) x isNil;
+		assert: (g nodes at: 1) adjacentNodes class
+		equals: OrderedCollection;
+		assertEmpty: (g nodes at: 1) adjacentNodes;
+		assert: (g nodes at: 1) y isNil;
+		assert: (g nodes at: 1) model equals: 10;
+		assert: (g nodes at: 1) label equals: 'Node: '.
+	anInteger := g n.
+	self
+		assert: g class equals: AIKleinbergGraphGenerator;
+		assert: g graph class equals: Array;
+		assert: g graph size equals: 2;
+		assert: (g graph at: 1) class equals: SortedCollection;
+		assert: (g graph at: 1) size equals: 1;
+		assert: ((g graph at: 1) at: 1) class equals: AI2DGridNode;
+		assert: (g graph at: 2) class equals: SortedCollection;
+		assertEmpty: (g graph at: 2);
+		assert: g edges class equals: SortedCollection;
+		assertEmpty: g edges;
+		assert: g n equals: 10;
+		assert: g nodes class equals: SortedCollection;
+		assert: g nodes size equals: 1;
+		assert: (g nodes at: 1) class equals: AI2DGridNode;
+		assert: (g nodes at: 1) x isNil;
+		assert: (g nodes at: 1) adjacentNodes class
+		equals: OrderedCollection;
+		assertEmpty: (g nodes at: 1) adjacentNodes;
+		assert: (g nodes at: 1) y isNil;
+		assert: (g nodes at: 1) model equals: 10;
+		assert: (g nodes at: 1) label equals: 'Node: ';
+		assert: anInteger equals: 10.
+	g initializeNodesOnGrid.
+	self
+		assert: g class equals: AIKleinbergGraphGenerator;
+		assert: g graph class equals: Array;
+		assert: g graph size equals: 2;
+		assert: (g graph at: 1) class equals: SortedCollection;
+		assert: (g graph at: 1) size equals: 1;
+		assert: ((g graph at: 1) at: 1) class equals: AI2DGridNode;
+		assert: (g graph at: 2) class equals: SortedCollection;
+		assertEmpty: (g graph at: 2);
+		assert: g edges class equals: SortedCollection;
+		assertEmpty: g edges;
+		assert: g n equals: 10;
+		assert: g nodes class equals: SortedCollection;
+		assert: g nodes size equals: 1;
+		assert: (g nodes at: 1) class equals: AI2DGridNode;
+		assert: (g nodes at: 1) x equals: 1;
+		assert: (g nodes at: 1) adjacentNodes class
+		equals: OrderedCollection;
+		assertEmpty: (g nodes at: 1) adjacentNodes;
+		assert: (g nodes at: 1) y equals: 1;
+		assert: (g nodes at: 1) model equals: 10;
+		assert: (g nodes at: 1) label equals: 'Node: '
+]
+
+{ #category : #'as yet unclassified' }
 AIKleinbergGraphGeneratorTest >> testNumberOfLocalNodes_amp_A39 [
 
 	"SmallAmp has derived this test from `AIKleinbergGraphGeneratorTest>>#testNumberOfLocalNodes` by applying some transformations and regenerating its assertions.
