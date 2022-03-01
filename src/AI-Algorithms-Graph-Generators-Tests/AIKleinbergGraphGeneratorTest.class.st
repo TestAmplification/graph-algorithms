@@ -190,6 +190,31 @@ AIKleinbergGraphGeneratorTest >> testNumberOfLocalNodes_amp_A39 [
 ]
 
 { #category : #'as yet unclassified' }
+AIKleinbergGraphGeneratorTest >> testNumberOfLocalNodes_amp_A8_L26 [
+
+	"SmallAmp has derived this test from `AIKleinbergGraphGeneratorTest>>#testNumberOfLocalNodes` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `AIKleinbergGraphGenerator>> #initializeNodesOnGrid` from 122 to 132:
+		Operation: ReplaceMinusWithPlusMutantOperator
+		Code snippet: `nbNodes - 1`
+		Dynamic state: {#nbNodes->10}
+		Mutant id: ReplaceMinusWithPlusMutantOperator#AIKleinbergGraphGenerator#initializeNodesOnGrid#122#132
+"
+
+	<madeBySmallAmp>
+	| g |
+	g := AIKleinbergGraphGenerator new.
+	g := g
+		     n;
+		     nodes: (1 to: 10 * 1);
+		     n: 10.
+	g initializeNodesOnGrid.
+	self
+		assert: (g nodes at: 1) x equals: 1;
+		assert: (g nodes at: 9) y equals: 1
+]
+
+{ #category : #'as yet unclassified' }
 AIKleinbergGraphGeneratorTest >> testNumberOfLocalNodes_amp_A9 [
 
 	<madeBySmallAmp>
