@@ -34,6 +34,62 @@ AIHitsTest >> testComplexWCycle [
 		self deny: node auth equals: 1 ]
 ]
 
+{ #category : #'as yet unclassified' }
+AIHitsTest >> testComplexWCycle_amp [
+
+	<smallAmpCoveres: 'RemoveCaretOperator#AIHits#run#184#190'>
+	<smallAmpCoveres: 'RemoveCaretOperator#AIHits#k#30#32'>
+	<smallAmpFrom: 'AIHitsTest>>#testComplexWCycle'>
+	<madeBySmallAmp>
+	| anAIHits aCollection1 aCollection2 |
+	anAIHits := AIGraphFixture complexWeightedGraph: hits.
+	self
+		assert: anAIHits class equals: AIHits;
+		assert: anAIHits graph class equals: Array;
+		assert: anAIHits graph size equals: 2;
+		assert: (anAIHits graph at: 1) class equals: SortedCollection;
+		assert: (anAIHits graph at: 1) size equals: 19;
+		assert: (anAIHits graph at: 2) class equals: SortedCollection;
+		assertEmpty: (anAIHits graph at: 2);
+		assert: anAIHits edges class equals: SortedCollection;
+		assertEmpty: anAIHits edges;
+		assert: anAIHits k equals: 20;
+		assert: anAIHits nodes class equals: SortedCollection;
+		assert: anAIHits nodes size equals: 19.
+	aCollection1 := hits run.
+	self
+		assert: hits class equals: AIHits;
+		assert: hits graph class equals: Array;
+		assert: hits graph size equals: 2;
+		assert: (hits graph at: 1) class equals: SortedCollection;
+		assert: (hits graph at: 1) size equals: 19;
+		assert: (hits graph at: 2) class equals: SortedCollection;
+		assertEmpty: (hits graph at: 2);
+		assert: hits edges class equals: SortedCollection;
+		assertEmpty: hits edges;
+		assert: hits k equals: 20;
+		assert: hits nodes class equals: SortedCollection;
+		assert: hits nodes size equals: 19;
+		assert: aCollection1 class equals: SortedCollection;
+		assert: aCollection1 size equals: 19.
+	aCollection2 := hits nodes.
+	self
+		assert: hits class equals: AIHits;
+		assert: hits graph class equals: Array;
+		assert: hits graph size equals: 2;
+		assert: (hits graph at: 1) class equals: SortedCollection;
+		assert: (hits graph at: 1) size equals: 19;
+		assert: (hits graph at: 2) class equals: SortedCollection;
+		assertEmpty: (hits graph at: 2);
+		assert: hits edges class equals: SortedCollection;
+		assertEmpty: hits edges;
+		assert: hits k equals: 20;
+		assert: hits nodes class equals: SortedCollection;
+		assert: hits nodes size equals: 19;
+		assert: aCollection2 class equals: SortedCollection;
+		assert: aCollection2 size equals: 19
+]
+
 { #category : #tests }
 AIHitsTest >> testCycle [
 
