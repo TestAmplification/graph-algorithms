@@ -77,6 +77,36 @@ AITarjanTest >> testCycle [
 	self assert: (a cycleNodes includesAll: cycleNodesOfA)
 ]
 
+{ #category : #'as yet unclassified' }
+AITarjanTest >> testCycle_amp_R0 [
+
+	<smallAmpCoveres: 'RemoveCaretOperator#AITarjan#run#167#200'>
+	<smallAmpFrom: 'AITarjanTest>>#testCycle'>
+	<madeBySmallAmp>
+	| a b c cycleNodesOfA aCollection |
+	aCollection := tarjan run.
+	self
+		assert: tarjan class equals: AITarjan;
+		assert: tarjan graph class equals: Array;
+		assert: tarjan graph size equals: 2;
+		assert: (tarjan graph at: 1) class equals: SortedCollection;
+		assertEmpty: (tarjan graph at: 1);
+		assert: (tarjan graph at: 2) class equals: SortedCollection;
+		assertEmpty: (tarjan graph at: 2);
+		assert: tarjan nodes class equals: SortedCollection;
+		assertEmpty: tarjan nodes;
+		assert: tarjan edges class equals: SortedCollection;
+		assertEmpty: tarjan edges;
+		assert: tarjan circuits class equals: OrderedCollection;
+		assertEmpty: tarjan circuits;
+		assert: tarjan stronglyConnectedComponents class
+		equals: OrderedCollection;
+		assertEmpty: tarjan stronglyConnectedComponents;
+		assert: aCollection class equals: OrderedCollection;
+		assertEmpty: aCollection;
+		should: [ a := tarjan findNode: $a ] raise: NotFound
+]
+
 { #category : #tests }
 AITarjanTest >> testNestedCycle [
 
