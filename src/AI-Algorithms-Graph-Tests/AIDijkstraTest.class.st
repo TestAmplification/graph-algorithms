@@ -186,6 +186,32 @@ AIDijkstraTest >> testComplexWeightedGraph3Backtracking [
 	dijkstra reset
 ]
 
+{ #category : #'as yet unclassified' }
+AIDijkstraTest >> testComplexWeightedGraph3_amp [
+
+	"SmallAmp has derived this test from `AIDijkstraTest>>#testComplexWeightedGraph3` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `AIDijkstra>> #start` from 9 to 15:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ start`
+		Dynamic state: {#start->nil}
+		Mutant id: RemoveCaretOperator#AIDijkstra#start#9#15
+	*	In `AIDijkstra>> #end` from 7 to 11:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ end`
+		Dynamic state: {#end->nil}
+		Mutant id: RemoveCaretOperator#AIDijkstra#end#7#11
+"
+
+	<madeBySmallAmp>
+	| anAIDijkstra |
+	anAIDijkstra := AIGraphFixture complexWeightedGraph3: dijkstra.
+	self
+		assert: anAIDijkstra end isNil;
+		assert: anAIDijkstra start isNil.
+	dijkstra runFrom: $a
+]
+
 { #category : #tests }
 AIDijkstraTest >> testSimpleWeightedGraph [
 
