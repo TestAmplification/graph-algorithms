@@ -111,6 +111,27 @@ AIHitsTest >> testGraphForHits [
 		self deny: node auth equals: 0 ]
 ]
 
+{ #category : #'as yet unclassified' }
+AIHitsTest >> testGraphForHits_amp [
+
+	"SmallAmp has derived this test from `AIHitsTest>>#testGraphForHits` by regenerating its assertions.
+	This test can cover this part:
+	*	In `AIHits>> #computeAuthoritiesFor:` from 105 to 118:
+		Operation: ReplacePlusWithMinusMutantOperator
+		Code snippet: `sum + node hub`
+		Dynamic state: {#sum->-1.6043728915247528}
+		Mutant id: ReplacePlusWithMinusMutantOperator#AIHits#computeAuthoritiesFor:#105#118
+"
+
+	<madeBySmallAmp>
+	AIGraphFixture simpleGraphForHits: hits.
+	hits
+		k: 3;
+		run.
+	self assert: (hits nodes at: 1) auth equals: 0.17321220897800546.
+	hits nodes
+]
+
 { #category : #tests }
 AIHitsTest >> testNestedCycle [
 
