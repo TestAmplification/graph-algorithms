@@ -19,6 +19,70 @@ AIErdosRenyiGNPGraphGeneratorTest >> testNumberOfNodes [
 ]
 
 { #category : #'as yet unclassified' }
+AIErdosRenyiGNPGraphGeneratorTest >> testNumberOfNodes_amp_L1_R2 [
+
+	"SmallAmp has derived this test from `AIErdosRenyiGNPGraphGeneratorTest>>#testNumberOfNodes` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `AIErdosRenyiGNPGraphGenerator>> #run` from 281 to 489:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `n1 ~= n2 ifTrue: [ 
+	100 atRandom / 100 < probability ifTrue: [ 
+		self
+			addEdge: { 
+					n1 model.
+					n2 model }
+			from: #first
+			to: #second ] ]`
+		Dynamic state: {#probability->0.5}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#AIErdosRenyiGNPGraphGenerator#run#281#489
+	*	In `AIErdosRenyiGNPGraphGenerator>> #run` from 248 to 491:
+		Operation: ReplaceDoBlockWithEmptyBlockOperator
+		Code snippet: `self nodes do: [ :n2 | 
+	n1 ~= n2 ifTrue: [ 
+		100 atRandom / 100 < probability ifTrue: [ 
+			self
+				addEdge: { 
+						n1 model.
+						n2 model }
+				from: #first
+				to: #second ] ] ]`
+		Dynamic state: nil
+		Mutant id: ReplaceDoBlockWithEmptyBlockOperator#AIErdosRenyiGNPGraphGenerator#run#248#491
+	*	In `AIErdosRenyiGNPGraphGenerator>> #run` from 219 to 493:
+		Operation: ReplaceDoBlockWithEmptyBlockOperator
+		Code snippet: `self nodes do: [ :n1 | 
+	self nodes do: [ :n2 | 
+		n1 ~= n2 ifTrue: [ 
+			100 atRandom / 100 < probability ifTrue: [ 
+				self
+					addEdge: { 
+							n1 model.
+							n2 model }
+					from: #first
+					to: #second ] ] ] ]`
+		Dynamic state: nil
+		Mutant id: ReplaceDoBlockWithEmptyBlockOperator#AIErdosRenyiGNPGraphGenerator#run#219#493
+	*	In `AIErdosRenyiGNPGraphGenerator>> #run` from 314 to 487:
+		Operation: ReplaceIfTrueReceiverWithFalseOperator
+		Code snippet: `100 atRandom / 100 < probability ifTrue: [ 
+	self
+		addEdge: { 
+				n1 model.
+				n2 model }
+		from: #first
+		to: #second ]`
+		Dynamic state: {#probability->0.5}
+		Mutant id: ReplaceIfTrueReceiverWithFalseOperator#AIErdosRenyiGNPGraphGenerator#run#314#487
+"
+
+	<madeBySmallAmp>
+	| g |
+	g := AIErdosRenyiGNPGraphGenerator new.
+	g nodes: (0 to: 30).
+	self should: [ g run ] raise: MessageNotUnderstood
+]
+
+{ #category : #'as yet unclassified' }
 AIErdosRenyiGNPGraphGeneratorTest >> testNumberOfNodes_amp_L23 [
 
 	"SmallAmp has derived this test from `AIErdosRenyiGNPGraphGeneratorTest>>#testNumberOfNodes` by applying some transformations and regenerating its assertions.
