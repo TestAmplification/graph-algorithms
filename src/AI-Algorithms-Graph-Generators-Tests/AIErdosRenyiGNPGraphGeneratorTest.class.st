@@ -61,3 +61,30 @@ AIErdosRenyiGNPGraphGeneratorTest >> testNumberOfNodes_amp_L23 [
 	g run.
 	self assertEmpty: (g graph at: 2)
 ]
+
+{ #category : #'as yet unclassified' }
+AIErdosRenyiGNPGraphGeneratorTest >> testNumberOfNodes_amp_L4_L14 [
+
+	"SmallAmp has derived this test from `AIErdosRenyiGNPGraphGeneratorTest>>#testNumberOfNodes` by applying some transformations and regenerating its assertions.
+	This test can cover these parts:
+	*	In `AIErdosRenyiGNPGraphGenerator>> #run` from 281 to 288:
+		Operation: ReplaceNotEqualWithEqualOperator
+		Code snippet: `n1 ~= n2`
+		Dynamic state: nil
+		Mutant id: ReplaceNotEqualWithEqualOperator#AIErdosRenyiGNPGraphGenerator#run#281#288
+	*	In `AIErdosRenyiGNPGraphGenerator>> #run` from 314 to 331:
+		Operation: ReplaceDivisionWithMultiplicationMutantOperator
+		Code snippet: `(100 atRandom / 100)`
+		Dynamic state: nil
+		Mutant id: ReplaceDivisionWithMultiplicationMutantOperator#AIErdosRenyiGNPGraphGenerator#run#314#331
+"
+
+	<madeBySmallAmp>
+	| g |
+	g := AIErdosRenyiGNPGraphGenerator new.
+	g := g
+		     nodes: (0 to: 30);
+		     probability: 1.5.
+	g run.
+	self assert: (g graph at: 2) size equals: 930
+]
